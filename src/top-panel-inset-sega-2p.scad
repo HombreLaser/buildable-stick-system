@@ -6,11 +6,11 @@
 include <parameters.scad>
 include <components.scad>
 
-module namco_noir_panel() {
+module sega_2p_panel() {
 	difference() {
 		panel();
-		noir();
+		sega_2p();
 	}
 }
 
-namco_noir_plus_one_panel();
+sega_2p_plus_one_panel();

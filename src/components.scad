@@ -151,6 +151,21 @@ module levermountholes() {
 		m4_hole();
 }
 
+// Tested with a crown stick. It could work with a taeyoung fanta.
+module koreanlevermountholes() {
+    // Joystick hole
+    cylinder(r=korean_lever_plate_hole, h=5.1, $fn=50, center=true);
+    // Screw holes. See: https://web.archive.org/web/20220926225824im_/https://cdn2.bigcommerce.com/server500/d90a4/product_images/uploaded_images/cwl-309helpmek-jms-st35-p1-spec.jpg
+    translate([25, 36.5, 0])
+		m4_hole();
+	translate([25, -36.5, 0])
+		m4_hole();
+	translate([-25, 36.5, 0])
+		m4_hole();
+	translate([-25, -36.5, 0])
+		m4_hole();
+}
+
 module levermountcountersinks() {
 	// holes for joystick bolt countersinks
 	translate([20, 42.5, 2])
@@ -162,6 +177,19 @@ module levermountcountersinks() {
 	translate([-20, -42.5, 2])
 		m4_hole_countersink();
 }
+
+module koreanlevermountcountersinks() {
+	// holes for joystick bolt countersinks
+	translate([25, 36.5, 2])
+		m4_hole_countersink();
+	translate([25, -36.5, 2])
+		m4_hole_countersink();
+	translate([-25, 36.5, 2])
+		m4_hole_countersink();
+	translate([-25, -36.5, 2])
+		m4_hole_countersink();
+}
+
 
 module base_panel() {
 	cube([panel_x, panel_y, panel_z], center=true);
@@ -414,8 +442,8 @@ module noir_button_p1() {
 	translate([-panel_x/2, -panel_y/2, 0]) translate([35, 140, 0]) button_30mm_hole();
 }
 
-module noir_plus_one() {
-	// standard 8 (all relative to the first button) (via r/fightsticks)
+module noir() {
+    // standard 8 (all relative to the first button) (via r/fightsticks)
 	noir_button_p1();
 	translate([32.94, 7.37+4.49, 0]) noir_button_p1();
 	translate([32.94+34.54, 7.37, 0]) noir_button_p1();
@@ -424,6 +452,10 @@ module noir_plus_one() {
 	translate([29.38, -6.86-19.64, 0]) noir_button_p1();
 	translate([29.38+3.56+31.24, -6.86-19.64-4.32, 0]) noir_button_p1();
 	translate([29.38+3.56+31.24+3.3+29.04, -6.86-19.64-4.32-7.62-6.93, 0]) noir_button_p1();
+}
+
+module noir_plus_one() {
+	noir();
 
 	// just my guesstimate on this one, but note that this is the same position as sega 2p
 	translate([-3.47-3.47, -78, 0]) noir_button_p1();

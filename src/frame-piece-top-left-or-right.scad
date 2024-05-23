@@ -8,7 +8,8 @@ include <components.scad>
 use <frame-left.scad>
 
 module top_left_or_right_frame_piece() {
-	piece_width = panel_support_width+frame_wall+frame_mount_column_width;
+    piece_width = panel_support_width+frame_wall+frame_mount_column_width;
+
 	intersection() {
 		left_frame();
 		difference() {

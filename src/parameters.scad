@@ -31,6 +31,9 @@ lever_mount_z = 2;
 // standard lever hole
 lever_plate_hole = 12;
 
+// korean lever hole
+korean_lever_plate_hole = 17.6;
+
 // case dimensions
 // base frame box. reminder: top of inside (including mounts) is chopped by panel_z for plates
 frame_x = 233;
