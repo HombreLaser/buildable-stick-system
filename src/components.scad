@@ -50,6 +50,14 @@ module button_30mm_hole() {
 	translate([0, 0, 70]) cylinder(r=big_button_radius*jumbo_decorative_radius_scale, h=20, $fn=50, center=true);
 }
 
+// large button hole, for creating layouts that will not accomodate the buttons themselves and instead will rely
+// on, for example, a 3 mm thick acrylic or mdf top panel.
+module button_outline_hole() {
+    cylinder(r=big_button_radius, h=100, $fn=50, center=true);
+	// Buttons will overlap each other, drawing the outline of the layout.
+	translate([0, 0, -25]) cylinder(r=big_button_radius+6, h=89, $fn=50, center=true);
+}
+
 module frame_hex_bolt_hole() {
 	scale([1, 1, 2]) cylinder(r=m4_bolt_hex_exterior_radius, h=frame_z, $fn=6, center=true);
 }
@@ -442,6 +450,10 @@ module noir_button_p1() {
 	translate([-panel_x/2, -panel_y/2, 0]) translate([35, 140, 0]) button_30mm_hole();
 }
 
+module noir_outline_p1() {
+	translate([-panel_x/2, -panel_y/2, 0]) translate([35, 140, 0]) button_outline_hole();
+}
+
 module noir() {
     // standard 8 (all relative to the first button) (via r/fightsticks)
 	noir_button_p1();
@@ -452,6 +464,26 @@ module noir() {
 	translate([29.38, -6.86-19.64, 0]) noir_button_p1();
 	translate([29.38+3.56+31.24, -6.86-19.64-4.32, 0]) noir_button_p1();
 	translate([29.38+3.56+31.24+3.3+29.04, -6.86-19.64-4.32-7.62-6.93, 0]) noir_button_p1();
+}
+
+module noir_outline() {
+    noir_outline_p1();
+    union() {
+        translate([32.94, 7.37+4.49, 0]) noir_outline_p1();
+        translate([20, -5, 0]) noir_outline_p1();
+    }
+    union() {
+        translate([32.94+34.54, 7.37, 0]) noir_outline_p1();
+        translate([60, -5, 0]) noir_outline_p1();
+    }
+    union() {
+        translate([32.94+34.54+33.02, -6.86, 0]) noir_outline_p1();
+        translate([90, -10, 0]) noir_outline_p1();
+    }
+	translate([-3.47, -6.86-19.64-4.32-7.62, 0]) noir_outline_p1();
+	translate([29.38, -6.86-19.64, 0]) noir_outline_p1();
+	translate([29.38+3.56+31.24, -6.86-19.64-4.32, 0]) noir_outline_p1();
+	translate([29.38+3.56+31.24+3.3+29.04, -6.86-19.64-4.32-7.62-6.93, 0]) noir_outline_p1();
 }
 
 module noir_plus_one() {
@@ -467,6 +499,10 @@ module sega_2p_p1() {
 	translate([-panel_x/2, -panel_y/2, 0]) translate([28.06, 140, 0]) button_30mm_hole();
 }
 
+module sega_2p_outline_p1() {
+    translate([-panel_x/2, -panel_y/2, 0]) translate([28.06, 140, 0]) button_outline_hole();
+}
+
 module sega_2p_6_button() {
 	// via slagcoin
 	sega_2p_p1();
@@ -477,10 +513,37 @@ module sega_2p_6_button() {
 	translate([30.5+36, -19, 0]) sega_2p_p1();
 }
 
+module sega_2p_6_button_outline() {
+	sega_2p_outline_p1();
+    union() {
+        translate([30.5, 11+9, 0]) sega_2p_outline_p1();
+        translate([90, 5, 0]) sega_2p_outline_p1();
+    }
+    union() {
+        translate([30.5+36, 11+9, 0]) sega_2p_outline_p1();
+        translate([55, 5, 0]) sega_2p_outline_p1();
+    }
+    union() {
+        translate([0, -19-9-11, 0]) sega_2p_outline_p1();
+        translate([25, 5, 0]) sega_2p_outline_p1();
+    }
+    union() {
+        translate([30.5, -19, 0]) sega_2p_outline_p1();
+        translate([15, 0, 0]) sega_2p_outline_p1();
+    }
+	translate([30.5+36, -19, 0]) sega_2p_outline_p1();
+}
+
 module sega_2p() {
 	sega_2p_6_button();
 	translate([30.5+36+36, 11, 0]) sega_2p_p1();
 	translate([30.5+36+36, -19-9, 0]) sega_2p_p1();
+}
+
+module sega_2p_outline() {
+	sega_2p_6_button_outline();
+	translate([30.5+36+36, 11, 0]) sega_2p_outline_p1();
+	translate([30.5+36+36, -19-9, 0]) sega_2p_outline_p1();
 }
 
 module sega_2p_plus_one() {

@@ -13,4 +13,4 @@ module sega_2p_panel() {
 	}
 }
 
-sega_2p_plus_one_panel();
+sega_2p_panel();
