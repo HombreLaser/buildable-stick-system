@@ -203,6 +203,12 @@ module base_panel() {
 	cube([panel_x, panel_y, panel_z], center=true);
 }
 
+module lower_base_panel() {
+    // To accomodate 3mm thick top panels, on top of the
+    // 3D printed one.
+    cube([panel_x, panel_y, panel_z + 3], center=true);
+}
+
 module base_bottom_panel() {
 	mirror([0, 0, 1]) base_panel();
 }
@@ -369,10 +375,14 @@ module base_frame() {
 	translate([panel_to_frame_point_x, -(panel_to_frame_point_y), 0]) rotate([0, 0, 270])  frame_mount_column();
 }
 
-module frame() {
+module frame(lower=false) {
 	difference() {
 		base_frame();
-		translate([0, 0, frame_z/2]) scale([1, 1, 2]) base_panel();
+        translate([0, 0, frame_z/2]) scale([1, 1, 2])
+            if(lower)
+                lower_base_panel();
+            else
+                base_panel();
 		translate([0, 0, -frame_z/2]) scale([1, 1, 2]) bottom_panel();
 		translate([panel_to_frame_point_x, panel_to_frame_point_y, 0]) frame_hex_bolt_hole();
 		translate([-panel_to_frame_point_x, panel_to_frame_point_y, 0]) frame_hex_bolt_hole();

@@ -8,11 +8,11 @@ include <components.scad>
 use <frame-piece-top-left-or-right.scad>
 use <frame-piece-bottom-left-or-right.scad>
 
-module side_frame_piece() {
+module side_frame_piece(lower=false) {
 	piece_width = panel_support_width+frame_wall+frame_mount_column_width;
 	difference() {
 		// side piece is left/right agnostic
-		frame();
+        frame(lower=lower);
 		// minus the top and bottom
 		top_left_or_right_frame_piece();
 		bottom_left_or_right_frame_piece();
