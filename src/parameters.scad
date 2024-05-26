@@ -81,6 +81,9 @@ panel_support_width = 5;
 neutrik_d_screw_radius = 1.6 + hole_tolerance;
 neutrik_d_radius = 12 + hole_tolerance;
 
+// GX 16 holes
+gx16_radius = 7.8 + hole_tolerance;
+
 // additional button radius for decorative panels, etc.
 decorative_radius_scale = 1.75;
 jumbo_decorative_radius_scale = 2;

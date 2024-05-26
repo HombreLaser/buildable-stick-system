@@ -1,17 +1,18 @@
 /*
- * SPDX-FileCopyrightText: © 2024 Brian S. Stephan <bss@incorporeal.org>
+ * SPDX-FileCopyrightText: © 2023 Brian S. Stephan <bss@incorporeal.org>
+ * SPDX-FileCopyrightText: © 2023 Luis Sebastián <buran@silosneeded.com>
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 include <parameters.scad>
 include <components.scad>
-use <frame-left.scad>
+use <frame-left-gx16.scad>
 
-module top_left_or_right_frame_piece(lower=false) {
+module top_left_or_right_frame_piece_gx16(lower=false) {
     piece_width = panel_support_width+frame_wall+frame_mount_column_width;
 
 	intersection() {
-		left_frame(lower=lower);
+		left_frame_gx16(lower=lower);
 		difference() {
 			// include the whole top wall (including mount columns)
 			translate([0, (frame_y/2)-(piece_width/2), 0]) cube([frame_x, piece_width, frame_z], center=true);
@@ -24,4 +25,4 @@ module top_left_or_right_frame_piece(lower=false) {
 	}
 }
 
-top_left_or_right_frame_piece();
+top_left_or_right_frame_piece_gx16(lower=true);

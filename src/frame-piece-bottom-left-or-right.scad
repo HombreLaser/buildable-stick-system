@@ -7,10 +7,10 @@ include <parameters.scad>
 include <components.scad>
 use <frame-left.scad>
 
-module bottom_left_or_right_frame_piece() {
+module bottom_left_or_right_frame_piece(lower=false) {
 	piece_width = panel_support_width+frame_wall+frame_mount_column_width;
 	intersection() {
-		left_frame();
+		left_frame(lower=lower);
 		difference() {
 			// include the whole bottom wall (including mount columns)
 			translate([0, -(frame_y/2)+(piece_width/2), 0]) cube([frame_x, piece_width, frame_z], center=true);

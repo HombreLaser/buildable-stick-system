@@ -4,8 +4,6 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-include <parameters.scad>
-include <components.scad>
-use <frame-piece-side-extended-to-bottom.scad>
+use <frame-piece-bottom-left-or-right.scad>
 
-extra_extended_left_or_right_frame_piece(lower=true);
+bottom_left_or_right_frame_piece(lower=true);

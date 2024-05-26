@@ -80,6 +80,10 @@ module neutrik_d_mount() {
 	translate([-9.5, -12, 0]) neutrik_d_screw_hole();
 }
 
+module gx16_mount() {
+cylinder(r=gx16_radius, h=100, $fn=50, center=true);
+}
+
 module rocker_20mm_mount() {
 	cylinder(r=10+hole_tolerance, h=5, $fn=50, center=true);
 	cube([2.2, 22, 5], center=true);
@@ -206,7 +210,7 @@ module base_panel() {
 module lower_base_panel() {
     // To accomodate 3mm thick top panels, on top of the
     // 3D printed one.
-    cube([panel_x, panel_y, panel_z + 3], center=true);
+    cube([panel_x, panel_y, panel_z + 3.5], center=true);
 }
 
 module base_bottom_panel() {

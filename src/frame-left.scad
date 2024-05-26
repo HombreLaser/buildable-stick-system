@@ -6,17 +6,17 @@
 include <parameters.scad>
 include <components.scad>
 
-module base_left_frame() {
+module base_left_frame(lower=false) {
 	difference() {
-		frame();
+		frame(lower=lower);
 		// chop the right edge off
 		side_chopper();
 	}
 }
 
-module left_frame() {
+module left_frame(lower=false) {
 	difference() {
-		base_left_frame();
+		base_left_frame(lower=lower);
 		// connection holes to other frames
 		frame_connection_holes();
 
