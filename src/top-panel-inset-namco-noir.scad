@@ -13,4 +13,4 @@ module namco_noir_panel() {
 	}
 }
 
-namco_noir_plus_one_panel();
+namco_noir_panel();
